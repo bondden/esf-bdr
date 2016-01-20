@@ -1,0 +1,8 @@
+@startuml
+
+!include thm.puml
+
+start
+stop
+
+@enduml

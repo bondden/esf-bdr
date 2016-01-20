@@ -1,0 +1,129 @@
+@startuml
+
+
+skinparam {
+  shadowing false
+  componentStyle uml2
+  BackgroundColor   #3C3F41
+  defaultFontColor  LightGrey
+  defaultFontName   "Ubuntu Mono"
+  defaultFontSize   10
+  title {
+    FontSize        30
+    'FontName "Gill Sans MT"
+    'FontStyle Bold
+  }
+  legend {
+    BackgroundColor #3C3F41
+    BorderColor     #3C3F41
+    FontColor       LightGrey
+  }
+  component {
+    BorderColor     LightGrey
+    BackgroundColor #3C3F41
+    ArrowColor      LightGrey
+    ArrowFontColor  LightGrey
+    FontColor       LightGrey
+  }
+  package {
+    BorderColor     LightGrey
+    BackgroundColor #3C3F41
+    FontColor       LightGrey
+  }
+  folder {
+    BorderColor     LightGrey
+    BackgroundColor #3C3F41
+    FontColor       LightGrey
+  }
+  database {
+    BorderColor     LightGrey
+    BackgroundColor #3C3F41
+    FontColor       LightGrey
+  }
+  rectangle {
+    BorderColor     LightGrey
+    BackgroundColor #3C3F41
+    FontColor       LightGrey
+  }
+  frame {
+    BorderColor     LightGrey
+    BackgroundColor #3C3F41
+    FontColor       LightGrey
+  }
+  node {
+    BorderColor     LightGrey
+    BackgroundColor #3C3F41
+    FontColor       LightGrey
+  }
+  note {
+    BorderColor     LightGrey
+    BackgroundColor #3C3F41
+    FontColor       LightGrey
+    'FontName   "Hack"
+  }
+  artifact {
+    BorderColor     LightGrey
+    BackgroundColor #3C3F41
+    FontColor       LightGrey
+    'FontName   "Hack"
+  }
+}
+
+!define _F <&folder>
+!define _f <&file>
+!define _b <&cog>
+!define _d <&document>
+!define _g <&globe>
+!define _l <&link-intact>
+!define _h <&hard-drive>
+!define _x <&box>
+!define _k <&key>
+
+[esf-puml]              as esfPu
+
+artifact "**/*.puml"    as pu
+[gulp-puml-to-json]     as utj
+artifact "jsn/*.json"   as jsn
+[gulp-puml]             as uts
+artifact "svg/**/*.svg" as svg
+[gulp-puml-postsvg]     as sts
+artifact "i/*.p.svg"    as psvg
+[gulp-json-to-so]       as jto
+artifact "so/*.json"    as so
+
+pu  --> utj
+utj --> jsn
+jsn --> jto
+jto --> so
+
+pu  --> uts
+uts --> svg
+svg --> sts
+sts --> psvg
+
+folder "Transforms" as tsf {
+  artifact "bdr-tsk.json"
+  artifact "glp-tsk.json"
+  artifact "nm.json"
+  artifact "odb-v.json"
+}
+
+tsf . jto
+
+note as n0
+== Semantic Object Types
+...
+SO
+|_ task
+  |_ bdr
+    |_ gulp
+|_ class
+  |_ mod
+  |_ odbV
+end note
+
+n0 . so
+
+uts .r.> esfPu
+
+@enduml

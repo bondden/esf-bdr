@@ -1,0 +1,311 @@
+@startuml
+
+!define CLR_BG #3C3F41
+!define CLR_C #SlateGrey
+!define CLR_J #IndianRed
+!define CLR_L #DarkSeaGreen
+!define CLR_M #RosyBrown
+!define CLR_N #DarkSalmon
+!define CLR_O #Gainsboro
+!define CLR_P #DimGrey
+!define CLR_Q #DarkSlateBlue
+!define CLR_T #DarkOliveGreen
+!define CLR_U #DarkKhaki
+
+skinparam {
+
+  shadowing false
+  BackgroundColor   CLR_BG
+
+  default {
+    BorderColor Grey
+    FontColor   DarkGrey
+    FontName    "Ubuntu Mono"
+    FontSize    8
+  }
+
+  title {
+    FontSize        30
+    'FontName "Gill Sans MT"
+    'FontStyle Bold
+  }
+
+  legend {
+    BackgroundColor CLR_BG
+    BorderColor     CLR_BG
+    Font {
+      Color       #a0a0a0
+      Size        10
+    }
+  }
+
+  note {
+    BorderColor     Grey
+    BackgroundColor #3C3F41
+    Font {
+      Color       LightGrey
+      Size        10
+    }
+    'FontName   "Hack"
+  }
+
+  usecase {
+
+    BorderColor Grey
+    BackgroundColor CLR_BG
+
+    Arrow {
+      Color Grey
+      FontColor #bbbbbb
+    }
+
+    Font {
+      Size 12
+      Color LightGrey
+    }
+
+    Stereotype {
+      Font {
+        Color Grey
+      }
+    }
+
+  }
+
+  usecase<<ci>> {
+    BorderColor     CLR_C
+    FontColor       CLR_C
+  }
+
+  usecase<<tst>> {
+    BorderColor     CLR_T
+    Font {
+      Color CLR_T
+    }
+  }
+
+  usecase<<mod>> {
+    BorderColor     CLR_M
+  }
+
+  usecase<<mpl>> {
+    BorderColor     CLR_P
+  }
+
+  usecase<<ops>> {
+  }
+
+  usecase<<qa>> {
+    BorderColor     CLR_Q
+  }
+
+  usecase<<upd>> {
+    BorderColor     CLR_U
+  }
+
+  usecase<<pm>> {
+    BorderColor     CLR_J
+  }
+
+  usecase<<cnt>> {
+    BorderColor     CLR_N
+  }
+
+  usecase<<l>> {
+    BorderColor     CLR_L
+  }
+
+  usecaseStereotypeFontSize 2
+  usecaseStereotypeFontColor CLR_BG
+
+  actor {
+
+    BorderColor DarkGrey
+    BackgroundColor CLR_BG
+
+    font {
+      'Style bold
+      Size 12
+      Color LightGray
+    }
+
+  }
+
+}
+
+!define _a \n<font:"Segoe UI Symbol">↧</font>\n
+
+!define _C [CLR_C]
+!define _J [CLR_J]
+!define _L [CLR_L]
+!define _M [CLR_M]
+!define _N [CLR_N]
+!define _O [CLR_O]
+!define _P [CLR_P]
+!define _Q [CLR_Q]
+!define _T [CLR_T]
+!define _U [CLR_U]
+
+
+!define _l(u,sym) <font:fontello>[[u.svg sym]]</font>
+
+header
+|= |= |
+|  | 2015-09-10 |
+|  | [[https://esf.itms.pro esf.itms.pro]] |
+end header
+
+footer
+<&copy> ITMS 2015
+end footer
+
+title esf-bdr uc
+
+:git:
+:nvm:
+':npm:
+:bitbucket.org:
+:npmjs.com:
+
+usecase (src _a bld \n _l(bld,)) as bld <<ci>>
+usecase (bld _a bta \n _l(bta,)) as bta <<ci>>
+usecase (bta _a prd \n _l(prd,)) as prd <<ci>>
+
+usecase (doc \n \n _l(doc,)) as doc <<qa>>
+
+usecase (ast) as be_ass <<cnt>>
+usecase (tpl) as be_tpl <<cnt>>
+usecase (nm)  as be_nm  <<cnt>>
+usecase (ast) as fe_ass <<cnt>>
+
+:bdr:        -_P-   (ops\nmpl) <<mpl>>
+:bdr:        --     (ops\ncls) <<ops>>
+:bdr:        -_N-   (bld\ncnt) <<cnt>>
+:bdr:        -_L-   (nf\nreq)  <<l>>
+
+(ops\nmpl)   -_P-   (bch\nops) <<mpl>>
+(ops\nmpl)   -_P-   (sgl\nops) <<mpl>>
+
+(bld\ncnt)   -_N-   (be) <<cnt>>
+  (be) -_N- (es)         <<cnt>>
+  (be) -_N- be_ass
+  (be) -_N- be_tpl
+  (be) -_N- be_nm
+(bld\ncnt)   -_N-   (fe) <<cnt>>
+  (fe) -_N- (js)     <<cnt>>
+  (fe) -_N- (css)    <<cnt>>
+  (fe) -_N- (html)   <<cnt>>
+  (fe) -_N- (ng)     <<cnt>>
+  (fe) -_N- fe_ass
+
+(nf\nreq)   -_L-   (cpl) <<l>>
+(nf\nreq)   -_L-   (cps) <<l>>
+(nf\nreq)   -_L-   (dbg) <<l>>
+(nf\nreq)   -_L-   (cpy) <<l>>
+
+(ops\ncls)   -_U-   (upd)       <<upd>>
+(ops\ncls)   -_M-   (mod\nops)  <<mod>>
+(ops\ncls)   -_C-   (ci\nops)   <<ci>>
+(ops\ncls)   -_Q-   (qa\nops)   <<qa>>
+(ops\ncls)   --     (bu)
+(ops\ncls)   -_J-   (pm)        <<pm>>
+
+(upd)        <|-_U- (upd\nnode) <<upd>>
+(upd)        <|-_U- (upd\ndeps) <<upd>>
+(upd)        <|-_U- (upd\nsw)   <<upd>>
+  (upd\nsw)    o-_U-  (bu\nsw)  <<upd>>
+
+(mod\nops)   <|-_M- (itl)      <<mod>>
+(mod\nops)   <|-_M- (new)      <<mod>>
+(mod\nops)   <|-_M- (itl\ndev) <<mod>>
+(mod\nops)   <|-_M- (pub)      <<mod>>
+  (pub) o--_M--  (ut)
+  (pub) o-_M-    doc
+
+(ci\nops)    <|-_C- bld
+(ci\nops)    <|-_C- bta
+(ci\nops)    <|-_C- prd
+
+(qa\nops)    <|-_T- (tst)      <<tst>>
+  (tst)        o-_T-  (ut) <<tst>>
+  (tst)        o-_T-  (it) <<tst>>
+  (tst)        o-_T-  (at) <<tst>>
+  (tst)        o-_T-  (lt) <<tst>>
+  (tst)        o-_T-  (pt) <<tst>>
+(qa\nops)    <|-_Q- doc <<qa>>
+
+bld o-_C-  (ut)
+bta o-_C-  (ut)
+bta o-_C-  (it)
+bta o-_C-  (at)
+bta o-_C-  (lt)
+bta o-_C-  (pt)
+prd o-_C-  (at)
+
+(pm)         o-_J-    (est) <<pm>>
+(pm)         o-_J-    (tdo) <<pm>>
+(pm)         o-_J-    (cov) <<pm>>
+
+doc   o--[CLR_Q]u- (tdo) <<pm>>
+doc   o-_Q-    (cng)      <<qa>>
+doc   o-_Q-    (cmp\numl) <<qa>>
+doc   o-_Q-    (cmp\nmd)  <<qa>>
+doc   o-_Q-    (cmp\nrme) <<qa>>
+doc   o-_Q-    (lsc)      <<qa>>
+doc   o-_Q-    (ctb)      <<qa>>
+doc   o-_Q-    (abr)      <<qa>>
+doc   o-_Q-    (knw)      <<qa>>
+doc   o-_Q-    (jsdoc)    <<qa>>
+doc   o-_Q-    (pkg)      <<qa>>
+  (pkg)
+  note bottom
+    package.json
+    travis.yml
+    etc.
+  end note
+
+
+(pub)        -_M-   :bitbucket.org:
+(pub)        -_M-   :npmjs.com:
+(itl)        -_M-   :npmjs.com:
+(new)        -_M-   :bitbucket.org:
+(new)        -_M-   :git:
+(itl\ndev)   -_M-   :git:
+(itl\ndev)   -_M-   :npmjs.com:
+
+(upd\ndeps)  -_U-   :npmjs.com:
+(upd\nnode)  -_U-   :nvm:
+
+
+legend right
+
+=Legend
+
+==Abbreviations
+
+|= Trm |= Def             |
+| abr  | abbreviation     |
+| bch  | batch            |
+| cmt  | commit           |
+| cng  | changes          |
+| cpl  | compile          |
+| cpr  | compare          |
+| cps  | compress         |
+| cpy  | copy             |
+| ct   | comment          |
+| ctb  | contributors     |
+| dbg  | debug            |
+| est  | estimate         |
+| fnd  | find             |
+| ghr  | gather           |
+| itl  | install          |
+| knw  | knowledge        |
+| mpl  | multipl(e│icity) |
+| ops  | operations       |
+| rme  | read me          |
+| tdo  | todo             |
+| trm  | term             |
+
+end legend
+
+@enduml

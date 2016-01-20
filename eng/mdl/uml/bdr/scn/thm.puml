@@ -1,0 +1,89 @@
+@startuml
+
+!define BDR_SCN_THM 1
+!define CLR_BG #3C3F41
+
+skinparam {
+
+  shadowing false
+  BackgroundColor   CLR_BG
+
+  default {
+    BorderColor Grey
+    FontColor  LightGrey
+    FontName   "Ubuntu Mono"
+    FontSize   10
+  }
+
+  header {
+    Font {
+      Color CLR_BG
+    }
+  }
+
+  title {
+    FontSize        30
+    'FontName "Gill Sans MT"
+    FontName "Helvetica"
+    'FontStyle Bold
+  }
+
+  legend {
+    BackgroundColor CLR_BG
+    BorderColor     CLR_BG
+    FontColor       LightGrey
+  }
+
+  activity {
+
+    BorderColor Grey
+    BackgroundColor CLR_BG
+
+    Arrow {
+      Color Grey
+      FontColor #bbbbbb
+    }
+
+    font {
+      'Style bold
+      Size 12
+      'Color White
+    }
+
+    start {
+      Color Grey
+    }
+
+    stop {
+      Color Grey
+    }
+
+    end {
+      Color Grey
+      BackgroundColor CLR_BG
+      FontColor CLR_BG
+    }
+
+  }
+
+  partition {
+    BorderColor Grey
+  }
+
+}
+
+!define _F <&folder>
+!define _f <&file>
+!define _b <&cog>
+!define _d <&document>
+!define _g <&globe>
+!define _l <&link-intact>
+!define _h <&hard-drive>
+!define _x <&box>
+!define _k <&key>
+!define _w <&warning>
+!define _i <&image>
+!define _db <font:fontello></font>
+!define _dbf <font:fontello></font>
+
+@enduml

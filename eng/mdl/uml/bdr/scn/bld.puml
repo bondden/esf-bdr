@@ -1,0 +1,55 @@
+@startuml
+
+!ifndef BDR_SCN_THM
+  !include thm.puml
+!endif
+
+start
+
+:src<
+
+split
+
+  :be|
+
+  split
+  :nm1]
+  split again
+  :nm2]
+  split again
+  :...]
+  split again
+  :nmN]
+  end split
+
+  split
+    :es|
+  split again
+    :tpl|
+  split again
+    :ast|
+  end split
+
+split again
+
+  :fe|
+
+  split
+  '  :js|
+  'split again
+    :css|
+  'split again
+  '  :ng|
+  split again
+    :ast|
+  end split
+  :html|
+  :lr|
+
+end split
+
+:bld>
+
+stop
+
+@enduml

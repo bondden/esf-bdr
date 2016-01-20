@@ -1,0 +1,304 @@
+@startuml
+
+!include thm.puml
+!include ../../inc/header.puml
+!include ../../inc/footer.puml
+
+!define _W <color:Orange>_w</color>
+
+!define string   <color:lightslategrey>string</color>
+!define integer  <color:lightslategrey>integer</color>
+!define array    <color:lightslategrey>array</color>
+!define mixed    <color:lightslategrey>mixed</color>
+!define object   <color:lightslategrey>object</color>
+!define bool     <color:lightslategrey>bool</color>
+!define void     <color:lightslategrey>void</color>
+!define Promise  <color:lightslategrey>Promise</color>
+!define Function <color:lightslategrey>Function</color>
+!define Error    <color:lightslategrey>Error</color>
+
+!definelong _inp
+----
+  <size:8>inp:</size>
+  ....
+!enddefinelong
+
+!definelong _run
+----
+  <size:8>run:</size>
+  ....
+!enddefinelong
+
+!definelong _dep
+----
+  <size:8>dep:</size>
+  ....
+!enddefinelong
+
+!definelong _out
+----
+  <size:8>out:</size>
+  ....
+!enddefinelong
+
+
+title Doc Builder Activity\n
+
+start
+
+:== inp
+
+=== var:
+string modPth
+object cfg
+
+==== cfg:
+# pth
+#<color:DimGrey>..</color> rpo
+#<color:DimGrey>....</color> tpl
+#<color:DimGrey>..</color> modsRt
+# tsk
+
+=== fls:
+==== rpo
+|_ _d cfg.json
+|_ _f tpl.?
+==== mod
+|_ _F modPath
+<
+
+split
+
+  :== tdo
+  _inp
+  string rtPth
+
+
+  _out
+  _F .todo
+  |_ _d todo.md
+  |_ _d todo.json
+  _run
+  # ghr todo
+  _dep
+  gulp-todo
+  ;
+
+split again
+
+  :== cng
+  _inp
+  string modPth
+
+
+  _out
+  _d changelog.md
+
+
+  _run
+  # git cmt -> md
+  _dep
+  gulp-changelog
+  ;
+
+split again
+
+  :== uml
+  _inp
+  string umlPth
+
+
+  _out
+  _F atf\img
+  |_ _i *.svg
+
+  _run
+  # cmp puml -> svg
+  _dep
+  esf-puml
+  ;
+
+split again
+
+  :== jsdoc
+  _inp
+  string beJsSrcPth
+  string ngAppPth
+  object beDocCnf
+  object ngDocCnf
+  _out
+  _F doc\*
+  _run
+  # jsdoc ->md
+  # ng mod->md
+  _dep
+  gulp-jsdoc
+  gulp-ngdocs;
+
+split again
+
+  :== lsc
+  _inp
+  string fePth
+  string bePth
+  _out
+  _F atf\lsc
+  |_ _d *.txt
+  _run
+  # for be & fe
+  # fnd lcs fls
+  # fnd lcs ct
+  # sve stc che
+  _dep
+  esf-lsc-ghr  ;
+
+split again
+
+  :== ctb
+  _inp
+  string gitRpoLocPth
+  string tmpFilePth
+  _out
+  _F .tmp _W
+  |_ _d ctb.json
+  _run
+  # ensure tmpFile
+  # get contribs
+
+  _dep
+  gulp-contribs
+  ;
+
+split again
+
+  :== abr
+  _inp
+  string scanPth
+
+  _out
+  _F atf
+  |_ _d abr.json
+  _run
+  # fetch cts
+  # save data
+
+  _dep
+  esf-ct-psr
+  ;
+
+split again
+
+  :== knw
+  _inp
+  string scanPth
+
+  _out
+  _F .tmp _W
+  |_ _d knw.json
+  _run
+  # fetch cts
+  # save data
+
+  _dep
+  esf-ct-psr
+  ;
+
+/'
+split again
+
+  :== pkg
+  _inp
+  _d package.json
+  _out
+  _run
+  _dep
+  ;
+'/
+
+end split
+
+  :== dat
+  _inp
+  _run
+  # prep dat
+  _dep
+  ;
+
+split
+
+  :== rme
+  _inp
+  === var:
+    string datPth
+    string tplPth
+    object tskCfg
+  === fls:
+  ==== rpo
+  |_ _d tpl.mustache
+  ==== mod
+  |_ _F .tmp
+    |_ _d d.json
+  |_ _d package.json
+  _out
+  _d README.md
+  _run
+  # cmp rme
+  _dep
+  mustache;
+
+split again
+
+  :== kb
+  _inp
+  === var:
+    string datPth
+    object tskCfg
+  _out
+  _db db changes
+  _run
+  # updates KB
+  _dep
+  esf-dbi;
+
+end split
+
+:== out
+
+=== be
+|_ _F atf
+  |_ _F lsc
+    |_ _d *.txt
+  |_ _F img
+    |_ _i *.svg
+|_ _d README.md
+
+=== fe
+|_ _F lsc
+  |_ _d *.txt
+|_ _d humans.txt
+>
+
+stop
+
+
+
+legend right
+
+= Legend
+
+== Symbolic Notation
+
+_W - the output is not intended for direct usage.
+
+
+== Notes
+
+# Mod doc or prj/dir, etc doc?
+
+  //Obviously, mod.//
+  //So, it`s necessary add selected\filtered//
+  //deps recursive scanning.//
+
+end legend
+
+@enduml

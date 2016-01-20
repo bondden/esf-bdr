@@ -1,0 +1,36 @@
+@startuml
+
+!include thm.puml
+
+start
+
+:bta;
+
+:.tmp/bta
+src/tst
+rpo<
+
+if(ut) then (fail)
+  end
+else (ok)
+
+if(it) then (fail)
+  end
+else (ok)
+
+  :bump|
+  :doc|
+  :git add|
+  :git commit|
+  :git push|
+  :npm publish|
+  :report|
+
+endif
+
+:npm/v x.x.x++>
+
+stop
+
+@enduml
+

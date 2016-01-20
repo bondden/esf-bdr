@@ -1,0 +1,64 @@
+@startuml
+
+!ifndef BDR_SCN_THM
+  !include thm.puml
+!endif
+
+start
+
+:bld<
+
+split
+
+  :be|
+
+  split
+  :nm1]
+  split again
+  :nm2]
+  split again
+  :...]
+  split again
+  :nmN]
+  end split
+
+  split
+    :lnt-src|
+    :es|
+  split again
+    :tpl|
+  split again
+    :ast|
+  end split
+
+  :lnt-pos|
+
+split again
+
+  :fe|
+
+  split
+    :lnt-src|
+    :js|
+  split again
+    :lnt-src|
+    :css|
+  split again
+    :lnt-src|
+    :ng|
+  split again
+    :ast|
+  end split
+  :lnt-src|
+  :bump ast|
+  :html|
+  :cps|
+  :lnt-pos|
+
+end split
+
+:.tmp/bta>
+
+stop
+
+@enduml
