@@ -17,15 +17,20 @@ skinparam {
 
   header {
     Font {
-      Color CLR_BG
+      Color DarkGrey
+      Size 7
+    }
+  }
+  
+  footer {
+    Font {
+      Color DarkGrey
     }
   }
 
   title {
     FontSize        30
-    'FontName "Gill Sans MT"
     FontName "Helvetica"
-    'FontStyle Bold
   }
 
   legend {
@@ -65,9 +70,15 @@ skinparam {
     }
 
   }
-
-  partition {
-    BorderColor Grey
+  
+  partition  {
+    Border {
+      Thickness 1
+      Color Grey
+    }
+    Background {
+      Color CLR_BG
+    }
   }
 
 }

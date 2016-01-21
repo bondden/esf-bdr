@@ -4,6 +4,18 @@
   !include thm.puml
 !endif
 
+header
+2015-09-10
+[[https://esf.itms.pro esf.itms.pro]]
+end header
+
+footer
+
+© ITMS 2015-2016
+end footer
+
+title BTA UC\n
+
 start
 
 :bld<
@@ -58,6 +70,21 @@ split again
 end split
 
 :.tmp/bta>
+
+:tst|
+
+if (test result) then (success)
+
+:dpy|
+:bta>
+
+else (fail)
+
+  stop
+
+endif
+
+
 
 stop
 

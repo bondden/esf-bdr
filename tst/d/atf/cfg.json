@@ -1,2 +1,9 @@
 {
+	"modes":{
+		"dev":{},
+		"prd":{},
+		"bta":{
+			"extends":"prd"
+		}
+	}
 }

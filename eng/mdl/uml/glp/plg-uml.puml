@@ -1,5 +1,14 @@
 @startuml
 
+header
+2015-09-10
+[[https://esf.itms.pro esf.itms.pro]]
+end header
+
+footer
+
+© ITMS 2015-2016
+end footer
 
 skinparam {
   shadowing false
@@ -78,6 +87,8 @@ skinparam {
 !define _h <&hard-drive>
 !define _x <&box>
 !define _k <&key>
+
+title PLG UML\n
 
 [esf-puml]              as esfPu
 

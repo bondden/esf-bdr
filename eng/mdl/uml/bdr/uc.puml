@@ -156,10 +156,10 @@ header
 end header
 
 footer
-<&copy> ITMS 2015
+© ITMS 2015-2016
 end footer
 
-title esf-bdr uc
+title ESF-BDR UC
 
 :git:
 :nvm:
@@ -264,11 +264,12 @@ doc   o-_Q-    (pkg)      <<qa>>
     etc.
   end note
 
+(cmp\nmd) o-_Q- (tidy\nmd) <<qa>> 
 
-(pub)        -_M-   :bitbucket.org:
+(pub)        -_M-   :cvcs:
 (pub)        -_M-   :npmjs.com:
 (itl)        -_M-   :npmjs.com:
-(new)        -_M-   :bitbucket.org:
+(new)        -_M-   :cvcs:
 (new)        -_M-   :git:
 (itl\ndev)   -_M-   :git:
 (itl\ndev)   -_M-   :npmjs.com:
@@ -276,6 +277,9 @@ doc   o-_Q-    (pkg)      <<qa>>
 (upd\ndeps)  -_U-   :npmjs.com:
 (upd\nnode)  -_U-   :nvm:
 
+(cvcs)       <|-_M- :bitbucket.org:
+(cvcs)       <|-_M- :github.com:
+(cvcs)       <|-_M- :gitlab.com:
 
 legend right
 
@@ -300,6 +304,8 @@ legend right
 | ghr  | gather           |
 | itl  | install          |
 | knw  | knowledge        |
+| lr   | livereload       |
+| lzp  | lazypipe         |
 | mpl  | multipl(e│icity) |
 | ops  | operations       |
 | rme  | read me          |

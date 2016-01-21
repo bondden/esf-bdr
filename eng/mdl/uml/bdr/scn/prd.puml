@@ -2,7 +2,35 @@
 
 !include thm.puml
 
-start
-stop
+header
+2015-09-10
+[[https://esf.itms.pro esf.itms.pro]]
+end header
+
+footer
+
+© ITMS 2015-2016
+end footer
+
+title PRD UC
+
+partition tst CLR_BG {
+  (*) --> "bta acceptance tst"
+  --> "bta sec tst"
+  --> "bta load tst"
+}
+
+if "test result" then
+
+  -->[success] "switch bta/prd mcn switch"
+  --> (*)
+
+else
+
+  -->[fail] (*)
+  
+end if
+
+
 
 @enduml

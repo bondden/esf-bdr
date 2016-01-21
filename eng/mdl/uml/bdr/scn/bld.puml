@@ -4,6 +4,18 @@
   !include thm.puml
 !endif
 
+header
+2015-09-10
+[[https://esf.itms.pro esf.itms.pro]]
+end header
+
+footer
+
+© ITMS 2015-2016
+end footer
+
+title BLD
+
 start
 
 :src<
@@ -35,11 +47,10 @@ split again
   :fe|
 
   split
-  '  :js|
-  'split again
+    :ng|
+    :js|
+  split again
     :css|
-  'split again
-  '  :ng|
   split again
     :ast|
   end split

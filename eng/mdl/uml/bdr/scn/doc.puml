@@ -1,8 +1,16 @@
 @startuml
 
 !include thm.puml
-!include ../../inc/header.puml
-!include ../../inc/footer.puml
+
+header
+2015-09-10
+[[https://esf.itms.pro esf.itms.pro]]
+end header
+
+footer
+
+© ITMS 2015-2016
+end footer
 
 !define _W <color:Orange>_w</color>
 
@@ -244,7 +252,8 @@ split
   _run
   # cmp rme
   _dep
-  mustache;
+  mustache
+  tidy-markdown;
 
 split again
 

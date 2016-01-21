@@ -1,0 +1,33 @@
+/* TEAM */
+Team:
+	{{#Info.Team}}
+		{{name}} as {{role}} ({{#contacts}}{{{url}}} {{/contacts}})
+	{{/Info.Team}}
+	{{^Info.Team}}	
+		
+	{{/Info.Team}}
+Contacts:
+	{{Info.Author.name}} ({{Info.Author.email}})
+Location:
+	{{Info.Location}}
+
+/* SPECIAL THANKS TO */
+	{{#Info.Thanks}}
+		{{name}}
+	{{/Info.Thanks}}
+	
+/* SITE */
+Last update:
+	beta: {{CurDate}}
+Standards:
+	{{#Info.Standards}}
+		{{title}} ({{{url}}})
+	{{/Info.Standards}}
+Components:
+	{{#Info.Components}}
+		{{title}} ({{{url}}}) {{comment}}
+	{{/Info.Components}}
+Software:
+	{{#Info.Tools}}
+		{{title}} ({{{url}}}) {{comment}}
+	{{/Info.Tools}}

@@ -1,26 +1,134 @@
 @startuml
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+!define CLR_BG #3C3F41
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+skinparam {
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+  shadowing false
+    BackgroundColor   CLR_BG
+  
+    default {
+      Border {
+        Color Grey
+        Thickness 1
+      }
+      Font {
+        Color   DarkGrey
+        Name    "Ubuntu Mono"
+        Size    8
+      }
+      Stereotype {
+        Border {
+          Color CLR_BG
+          Thickness 1
+        }
+      }
+    }
+  
+    title {
+      Font {
+        Size        30
+      }
+    }
+  
+    legend {
+      BackgroundColor CLR_BG
+      Border {
+        Color     CLR_BG
+      }
+      Font {
+        Color       #a0a0a0
+        Size        10
+      }
+    }
 
-class ArrayList {
-Object[] elementData
-size()
+  header {
+    Font {
+      Color DarkGrey
+      Size 7
+    }
+  }
+  
+  footer {
+    Font {
+      Color DarkGrey
+    }
+  }
+  
+  note {
+    BackgroundColor CLR_BG
+    Border {
+      Color Grey
+    }
+    Font {
+      Color       LightGrey
+      Size        10
+    }
+  }
+
+  class {
+
+    Background {
+      Color CLR_BG
+    }
+
+    Border {
+      Color Grey
+      Thickness 1
+    }
+
+    Arrow {
+      Color Grey
+      Font {
+        Color #bbbbbb
+        Size 12
+      }
+    }
+
+    Font {
+      Size 12
+      Color LightGrey
+    }
+
+    Stereotype {
+      Font {
+        Color Grey
+      }
+    }
+
+  }
+  
+  CircledCharacter {
+    Border {
+      Color CLR_BG
+      Thickness 1
+    }
+    Radius 5
+    Font {
+      Size 7
+      Color CLR_BG
+    }
+  }
+  
+  Stereotype {
+    Border {
+      Color CLR_BG
+      Thickness 1
+    }
+    C {
+      Border {
+        Color CLR_BG
+        Thickness 1
+      }
+      Background {
+        'Color DimGrey
+      }
+    }
+  }
+  
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class Bdr {
 }
 
 @enduml

@@ -1,0 +1,88 @@
+{
+	"description":"Linting tools config",
+	"csslint":{
+		"font-faces":true,
+		"import":true,
+		"zero-units":true,
+		"overqualified-elements":true,
+		"shorthand":true,
+		"font-sizes":true,
+		"floats":true,
+		"qualified-headings":true,
+		"unique-headings":true,
+		"bulletproof-font-face":true,
+		"fallback-colors":true
+	},
+	"htmlhint":{
+		"doctype-html5":true,
+		"doctype-first": true,
+		"attr-lowercase": true,
+		"attr-value-double-quotes": true,
+		"attr-unsafe-chars":true,
+		"attr-no-duplication": true,
+		"tagname-lowercase": true,
+		"tag-pair": true,
+		"spec-char-escape": true,
+		"id-unique": true,
+		"id-class-value":true,
+		"id-class-ad-disabled":true,
+		"src-not-empty": true,
+		"head-script-disabled":true
+	},
+	"jscsFe":{
+		"disallowKeywords": ["with"],
+		"disallowKeywordsOnNewLine": ["else","catch"],
+		"disallowNewlineBeforeBlockStatements": true,
+		"disallowSpaceAfterObjectKeys": "ignoreMultiLine",
+		"disallowSpaceAfterPrefixUnaryOperators": true,
+		"disallowSpacesInFunctionDeclaration": {
+			"beforeOpeningRoundBrace": true,
+			"beforeOpeningCurlyBrace": true
+		},
+		"disallowSpacesInsideParentheses": true,
+		"disallowTrailingComma":true,
+		"disallowTrailingWhitespace": "ignoreEmptyLines",
+		"maximumLineLength": 1000000,
+		"requireCamelCaseOrUpperCaseIdentifiers": true,
+		"requireCapitalizedConstructors": true,
+		"validateIndentation": "\t",
+		"disallowMixedSpacesAndTabs": "smart",
+		"requireCurlyBraces": true,
+		"requireSemicolons": true,
+		"validateLineBreaks": "LF",
+		"excludeFiles": [
+			"${d.fe.js.maps+\"**\"}",
+			"**.map",
+			"**/*.map"
+		]
+	},
+	"jscsBe":{
+		"disallowKeywords": ["with"],
+		"disallowKeywordsOnNewLine": ["else","catch"],
+		"disallowNewlineBeforeBlockStatements": true,
+		"disallowSpaceAfterObjectKeys": "ignoreMultiLine",
+		"disallowSpaceAfterPrefixUnaryOperators": true,
+		"disallowSpacesInFunctionDeclaration":{
+			"beforeOpeningRoundBrace": true,
+			"beforeOpeningCurlyBrace": true
+		},
+		"disallowSpacesInsideParentheses": true,
+		"disallowTrailingComma":true,
+		"disallowTrailingWhitespace": "ignoreEmptyLines",
+		"maximumLineLength": 180,
+		"requireBlocksOnNewline":true,
+		"requireCamelCaseOrUpperCaseIdentifiers": true,
+		"requireCapitalizedConstructors": true,
+		"validateIndentation": "\t",
+		"disallowMixedSpacesAndTabs": "smart",
+		"requireCurlyBraces": true,
+		"requireAlignedObjectValues": "all",
+		"requireSemicolons": true,
+		"validateLineBreaks": "LF",
+		"excludeFiles": [
+			"${d.be.js.maps+\"**\"}",
+			"**.map",
+			"**/*.map"
+		]
+	}
+}

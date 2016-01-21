@@ -2,7 +2,6 @@
  * Created by Denis Bondarenko <bond.den@gmail.com> on 29.06.2015.
  */
 'use strict';
-require('babel/polyfill');
 
 var
 	expect   = require('chai').expect,

@@ -1,26 +1,295 @@
 @startuml
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+!define BDR_SCN_THM 1
+!define CLR_BG #3C3F41
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+skinparam {
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+  shadowing false
+    BackgroundColor   CLR_BG
+  
+    default {
+      Border {
+        Color Grey
+        Thickness 1
+      }
+      Font {
+        Color   DarkGrey
+        Name    "Ubuntu Mono"
+        Size    8
+      }
+      Stereotype {
+        Border {
+          Color CLR_BG
+          Thickness 1
+        }
+      }
+    }
+  
+    title {
+      Font {
+        Size        30
+      }
+    }
+  
+    legend {
+      BackgroundColor CLR_BG
+      Border {
+        Color     CLR_BG
+      }
+      Font {
+        Color       #a0a0a0
+        Size        10
+      }
+    }
 
-class ArrayList {
-Object[] elementData
-size()
+  header {
+    Font {
+      Color DarkGrey
+      Size 7
+    }
+  }
+  
+  footer {
+    Font {
+      Color DarkGrey
+    }
+  }
+  
+  note {
+    BackgroundColor CLR_BG
+    Border {
+      Color Grey
+    }
+    Font {
+      Color       LightGrey
+      Size        10
+    }
+  }
+
+  class {
+
+    Background {
+      Color CLR_BG
+    }
+
+    Border {
+      Color Grey
+      Thickness 1
+    }
+
+    Arrow {
+      Color Grey
+      Font {
+        Color #bbbbbb
+        Size 12
+      }
+    }
+
+    Font {
+      Size 12
+      Color LightGrey
+    }
+
+    Stereotype {
+      Font {
+        Color Grey
+      }
+    }
+
+  }
+  
+  CircledCharacter {
+    Border {
+      Color CLR_BG
+      Thickness 1
+    }
+    Radius 5
+    Font {
+      Size 7
+      Color CLR_BG
+    }
+  }
+  
+  Stereotype {
+    Border {
+      Color CLR_BG
+      Thickness 1
+    }
+    C {
+      Border {
+        Color CLR_BG
+        Thickness 1
+      }
+      Background {
+        'Color DimGrey
+      }
+    }
+  }
+  
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+!define _F <&folder>
+!define _f <&file>
+!define _b <&cog>
+!define _d <&document>
+!define _g <&globe>
+!define _l <&link-intact>
+!define _h <&hard-drive>
+!define _x <&box>
+!define _k <&key>
+
+!define tsk(n) class n << (T,LightSlateGray) >> 
+!define pkg(n) class n << (P,PapayaWhip) >>
+!define atf(n) class n << (A,DarkKhaki) >>
+!define fnc(n) class n << (F,SlateBlue) >>
+!define var(n) class n << (V,DarkSeaGreen) >>
+!define lzp(n) class n << (L,Plum) >>
+!define atf(id,n) class "//n//" as id << (A,DarkKhaki) >>
+
+hide empty members
+hide empty methods
+
+atf(a-cfg,cfg.json)
+atf(a-rme,tpl/rme.md.mustache)
+atf(a-rme-jsn,<color:DarkGrey>.tmp/rme.jsn.mustache)
+
+pkg(fs-extra)
+pkg(gulp-changelog)
+pkg(gulp-todo)
+'pkg(gulp-puml-to-json)
+'pkg(gulp-puml-postsvg)
+'pkg(gulp-json-to-so)
+pkg(esf-puml)
+pkg(gulp-puml)
+  "gulp-puml" .u.> "esf-puml"
+pkg(gulp-jsdoc)
+pkg(gulp-ngdocs)
+pkg(gulp-license-gatherer)
+pkg(gulp-contribs)
+pkg(mustache)
+pkg(tidy-markdown)
+pkg(gulp-doctoc)
+pkg(esf-dbi)
+pkg(gulp-todo)
+
+var(cfg)
+var(cfg-pth)
+var(cfg-tdo)
+cfg *-- "cfg-tdo"
+cfg *-- "cfg-pth"
+
+fnc(loadCfg)
+  loadCfg .u..> "a-cfg"
+  loadCfg .u.> "fs-extra"
+  loadCfg --> cfg
+
+tsk(abr)
+  abr .u.> "gulp-todo"
+  abr ..u..> "cfg-tdo"
+tsk(cng)
+  cng .u.> "gulp-changelog"
+tsk(uml)
+  uml .u.> "gulp-puml"
+tsk(jsdoc)
+  jsdoc .u.> "gulp-jsdoc"
+  jsdoc .u.> "gulp-ngdocs"
+tsk(lsc)
+  lsc .u.> "gulp-license-gatherer"
+tsk(ctb)
+  ctb .u.> "gulp-contribs"
+'tsk(tdo)
+'tsk(knw)
+tsk(dat)
+tsk(pkg)
+  pkg .u.> dat
+tsk(rme)
+  rme .u.> dat
+  rme .u.> "mustache"
+  rme .u.> "gulp-doctoc"
+  rme .u.> "tidy-markdown"
+  rme .u..> "a-rme"
+  rme .u..> "a-rme-jsn"
+tsk(kb)
+
+tsk(doc) {
+  process req.uc.doc
 }
+
+abr   <.. doc
+cng   <.. doc
+uml   <.. doc
+jsdoc <.. doc  
+lsc   <.. doc
+ctb   <.. doc
+pkg   <.. doc
+rme   <.. doc
+kb    <.. doc
+
+'tdo   <.. doc
+'knw   <.. doc
+
+tsk(ops-bu)
+tsk(ops-ci)
+tsk(ops-mod)
+tsk(ops-pm)
+tsk(ops-qa)
+tsk(ops-upd)
+tsk(ops)
+
+"ops-bu"  <.. ops
+"ops-ci"  <.. ops
+"ops-mod" <.. ops
+"ops-pm"  <.. ops
+"ops-qa"  <.. ops
+"ops-upd" <.. ops
+
+tsk(be-ast)
+tsk(be-es)
+tsk(be-nm)
+tsk(be-tpl)
+tsk(bld-be)
+
+"be-ast"  <.. "bld-be"    
+"be-es"   <.. "bld-be"
+"be-nm"   <.. "bld-be"  
+"be-tpl"  <.. "bld-be"    
+
+tsk(fe-ng)
+tsk(fe-js)
+tsk(fe-css)
+tsk(fe-ast)
+tsk(fe-html)
+tsk(fe-lr)
+tsk(bld-fe)
+
+"fe-ng"   <.. "bld-fe"
+"fe-js"   <.. "bld-fe"
+"fe-css"  <.. "bld-fe"  
+"fe-ast"  <.. "bld-fe"  
+"fe-html" <.. "bld-fe"  
+"fe-lr"   <.. "bld-fe"
+
+tsk(bld)
+
+"bld-be" <.. bld
+"bld-fe" <.. bld
+
+lzp(nfr-cpl)
+lzp(nfr-cps)
+lzp(nfr-dbg)
+lzp(nfr-cpy)
+lzp(nfr)
+
+"nfr-cpl" <.. nfr
+"nfr-cps" <.. nfr
+"nfr-dbg" <.. nfr
+"nfr-cpy" <.. nfr
+
+tsk(wch)
+ops <.. wch
+bld <.. wch
+doc <.. wch
+nfr <.. wch
 
 @enduml

@@ -1,0 +1,78 @@
+{
+	"schemaVersion":"0.2.0",
+	"description":"Config for mkrpos, that makes private bitbucket repositories",
+	"spc":{
+		"class":{
+			"Repo":{
+				"name":"esf-fo",
+				"ignore":false,
+				"description":"",
+				"keywords":[
+					"esf",
+					"fo"
+				]
+			}
+		}
+	},
+	"cfg":{
+		"rmt":{
+			"urlBase":"https://api.bitbucket.org/2.0/repositories/bondden/",
+			"cloneUrl":"https://bondden:uUkqA70joxu4WsXRrrVj@bitbucket.org/bondden/",
+			"user":"bondden",
+			"pass":"uUkqA70joxu4WsXRrrVj",
+			"typeHeader":"application/json; charset=UTF-8",
+			"set":{
+				"scm" : "git",
+				"is_private" : "true",
+				"fork_policy" : "no_public_forks",
+				"language" : "nodejs"
+			}
+		},
+		"loc":{
+			"nmDir":"/web/itms/dmn/node_modules/"
+		}
+	},
+	"mod":[
+		{
+			"name":"itms-fo",
+			"ignore":true,
+			"keywords":[
+				"itms",
+				"fo"
+			]
+		},
+		{
+			"name":"itms-bo",
+			"ignore":true,
+			"keywords":[
+				"itms",
+				"bo"
+			]
+		},
+		{
+			"name":"itms-img-psr",
+			"ignore":true,
+			"keywords":[
+				"itms",
+				"img",
+				"psr"
+			]
+		},
+		{
+			"name":"esf-bdr",
+			"ignore":true,
+			"keywords":[
+				"esf",
+				"ci",
+				"bdr"
+			]
+		},
+		{
+			"name":"esf-rbl",
+			"ignore":true,
+			"keywords":[
+				"esf"
+			]
+		}
+	]
+}

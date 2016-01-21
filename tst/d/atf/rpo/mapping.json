@@ -1,0 +1,8 @@
+{
+	"stc":{
+		"beta":"host:",
+		"ci":"/web/itms/dmn/itms/ci/",
+		"dev":"/web/itms/dmn/itms/dev/bld/",
+		"prd":"host:"
+	}
+}
