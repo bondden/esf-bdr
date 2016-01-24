@@ -7,13 +7,13 @@ const
   gulp=require('gulp-help')(require('gulp'))
   ;
 
-export var tsk=gulp
+export var uml=gulp
   .task(
-    "doc",
+    "uml",
     "",
     [],
     ()=>{
-      console.log('running task doc');
+      console.log('running task uml');
     },
     {}
   );

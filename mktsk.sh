@@ -12,6 +12,8 @@ select yn in "Yes" "No"; do
 	esac
 done
 
+source "/mcs/lib/utl.sh"
+
 #ls -RN1 tsk | grep -Po "[^ ]+\.js"
 for i in $(tree -fNi tsk | grep -P "\.js")
 do
@@ -23,7 +25,9 @@ do
 		f=$(dirname $(echo $i | grep -Po "([^\/]+)\/([^\/]+)\.js"))
 	fi
 	
-	c=$(sed "s/TSK_NAME/$f/" ./tpl/dft.tsk.js)
+	v=$(camelify "$f")
+	
+	c=$(sed "s/TSK_NAME/$f/" ./tpl/dft.tsk.js | sed "s/TSK_VAR/$v/")
 	echo "$c" > $i
 
 	#echo '"use strict";' > $i

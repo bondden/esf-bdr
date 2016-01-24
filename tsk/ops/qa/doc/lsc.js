@@ -7,13 +7,13 @@ const
   gulp=require('gulp-help')(require('gulp'))
   ;
 
-export var at=gulp
+export var lsc=gulp
   .task(
-    "at",
+    "lsc",
     "",
     [],
     ()=>{
-      console.log('running task at');
+      console.log('running task lsc');
     },
     {}
   );

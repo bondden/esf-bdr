@@ -7,7 +7,7 @@ const
   gulp=require('gulp-help')(require('gulp'))
   ;
 
-export var tsk=gulp
+export var sw=gulp
   .task(
     "sw",
     "",
