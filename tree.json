@@ -1,7 +1,14 @@
 {
+	"cre":{
+		
+	},
+	"pth":{
+		
+	},
 	"tls":{
 		"lnt":{
 			"src":{
+				"description":"sources style",
 				"fe":{
 					"eslint":{}
 				},
@@ -21,10 +28,21 @@
 			}
 		},
 		"cpl":{
-			"uglify":{},
-			"csso":{},
-			"svgo":{},
-			"htmlmin":{}
+			"fe":{
+				"uglify":{},
+				"csso":{},
+				"svgo":{},
+				"htmlmin":{},
+				"ng":{
+					
+				}
+			},
+			"be":{
+				"babel":{},
+				"ghc":{
+					"str":""
+				}				
+			}
 		}
 	},
 	"tsk":{

@@ -27,6 +27,7 @@
     "babel-register": "^6.4.3",
     "gulp": "^3.9.0",
     "gulp-help": "^1.6.1",
+    "gulp-todo": "^4.1.0",
     "require-dir": "^0.3.0"
   },
   "devDependencies": {
